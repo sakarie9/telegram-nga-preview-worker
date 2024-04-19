@@ -16,7 +16,7 @@ Or add the bot to a group, it will reply any message with a vaild NGA link with 
 
    `git clone https://github.com/sakarie9/telegram-nga-preview-worker`
 
-3. Add Telegram token to cloudflare workers
+3. Add Telegram bot token to cloudflare workers
 
    `wrangler secret put TELEGRAM_BOT_TOKEN`
 
@@ -25,3 +25,13 @@ Or add the bot to a group, it will reply any message with a vaild NGA link with 
 4. Deploy
 
    `wrangler deploy`
+
+5. Active webhook
+
+   get the url of the worker in cloudflare dashboard and append `/registerWebhook` to the url. For example: `https://telegram-nga-preview.username.workers.dev/registerWebhook`
+
+   open the url in a browser, you will see a 'Ok'
+
+6. Done
+
+   now you can send the bot some link to see if it works
