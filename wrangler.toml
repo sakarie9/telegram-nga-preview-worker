@@ -1,0 +1,9 @@
+name = "telegram-nga-preview"
+main = "src/index.js"
+compatibility_date = "2024-04-02"
+workers_dev = true
+
+[vars]
+DEBUG = false
+WEBHOOK = '/endpoint'
+SECRET = '1145141919810abcdef' # // A-Z, a-z, 0-9, _ and -
