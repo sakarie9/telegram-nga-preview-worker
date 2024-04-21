@@ -96,7 +96,7 @@ function getNGATextPreview(ngaLink, html) {
 	body = body.replaceAll('&nbsp;', ' ');
 	body = body.replaceAll('&apos;', "'");
 	// Delete [img] tags and contents
-	const pattern_img = /\[img](.*?)\[\/img\]/g;
+	const pattern_img = /\[img\](.*?)\[\/img\]/g;
 	body = body.replaceAll(pattern_img, '');
 	// Delete Stickers
 	const pattern_sticker = /\[s:.*?\]/g;
@@ -106,6 +106,9 @@ function getNGATextPreview(ngaLink, html) {
 	body = body.replaceAll(pattern_del, '<del>$1</del>');
 	// Reduce \n
 	body = body.replaceAll(/\n{3,}/g, '\n\n');
+	// Delete [quote]
+	const pattern_quote = /\[quote\](.*?)\[\/quote\]/g;
+	body = body.replaceAll(pattern_quote, '$1');
 
 	body = substringDesc(body);
 
