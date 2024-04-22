@@ -109,6 +109,9 @@ function getNGATextPreview(ngaLink, html) {
 	// Delete [quote]
 	const pattern_quote = /\[quote\](.*?)\[\/quote\]/g;
 	body = body.replaceAll(pattern_quote, '$1');
+	// Replace [url] with <a href=""></a>
+	const pattern_url = /\[url\](.*?)\[\/url\]/g;
+	body = body.replaceAll(pattern_url, '<a href="$1">$1</a>');
 
 	body = substringDesc(body);
 
