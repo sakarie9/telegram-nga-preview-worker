@@ -115,6 +115,9 @@ function getNGATextPreview(ngaLink, html) {
 
 	body = substringDesc(body);
 
+	console.log(`title: ${title}`);
+	console.log(`body: ${body}`);
+
 	if (title !== '') {
 		return `<b><u><a href="${ngaLink}">${title}</a></u></b>\n\n${body}`;
 	} else {
@@ -342,7 +345,7 @@ async function debugRequest(request) {
 	const html = await getNGAHtml(link);
 	const preview = getNGATextPreview(link, html);
 	const img_count = getImageCount(html);
-  console.log(link);
+	console.log(link);
 	console.log(preview);
 	console.log(img_count);
 	console.log(imgs);
