@@ -74,7 +74,7 @@ function getNGACookie() {
 
 	var random5 = Math.floor(Math.random() * 0xfffff).toString(16);
 	while (random5.length < 5) {
-		random5 = '0' + uid;
+		random5 = '0' + random5;
 	}
 
 	const uid = `guest0${timestamp.toString(16)}${random5}`;
