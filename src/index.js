@@ -164,8 +164,8 @@ function imgLinkProcess(imgLink) {
 }
 
 function substringDesc(desc) {
-	const maxLength = 200;
-	const maxmaxLength = 300;
+	const maxLength = 400;
+	const maxmaxLength = 600;
 
 	// 如果title字段的长度超过了最大字符数，则截取字符串
 	if (desc.length > maxLength) {
