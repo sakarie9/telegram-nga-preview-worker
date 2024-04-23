@@ -42,7 +42,7 @@ function getNGALinkFromMessage(text) {
 			ngaLink = ngaLink.replace('&opt=128', '');
 		}
 
-		console.log(ngaLink);
+		logf(ngaLink);
 
 		return ngaLink;
 	}
@@ -51,7 +51,6 @@ function getNGALinkFromMessage(text) {
 
 async function getNGAHtml(ngaLink) {
 	const cookie = getNGACookie();
-	//console.log(cookie);
 	const response = await fetch(ngaLink, {
 		headers: {
 			// 在请求头部中包含所需的 Cookie
@@ -118,8 +117,8 @@ function getNGATextPreview(ngaLink, html) {
 
 	body = substringDesc(body);
 
-	console.log(`title: ${title}`);
-	console.log(`body: ${body}`);
+	logf(`title: ${title}`);
+	logf(`body: ${body}`);
 
 	if (title !== '') {
 		return `<b><u><a href="${ngaLink}">${title}</a></u></b>\n\n${body}`;
@@ -341,22 +340,24 @@ function apiUrl(methodName, params = null) {
 
 // ===========================================================================================================
 
+function logf(...args) {
+	if (LOG) {
+		console.log(...args);
+	}
+}
+
 async function debugRequest(request) {
-	//link = 'https://bbs.nga.cn/read.php?tid=38176519'
-	//link = 'https://ngabbs.com/read.php?tid=39893179'
-	//link = 'https://ngabbs.com/read.php?tid=39895781'
-	//link = 'https://ngabbs.com/read.php?tid=39902240&_fp=2'
-	link = 'https://bbs.nga.cn/read.php?pid=738060273&opt=128';
+	link = LINK;
 	if (link.includes('&opt=128')) {
 		link = link.replace('&opt=128', '');
 	}
 	const html = await getNGAHtml(link);
 	const preview = getNGATextPreview(link, html);
 	const img_count = getImageCount(html);
-	console.log(link);
-	console.log(preview);
-	console.log(img_count);
-	console.log(imgs);
+	logf(link);
+	logf(preview);
+	logf(img_count);
+	logf(imgs);
 	var imgs = '';
 	if (img_count == 0) {
 	} else if (img_count == 1) {
