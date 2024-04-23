@@ -32,7 +32,7 @@ async function onMessage(message) {
 }
 
 function getNGALinkFromMessage(text) {
-	const pattern_nga = /(?:https?:\/\/(?:bbs\.nga\.cn|ngabbs\.com)\/[^\s]+)/;
+	const pattern_nga = /(?:https?:\/\/(?:bbs\.nga\.cn|ngabbs\.com|nga\.178\.com|bbs\.gnacn\.cc)[-a-zA-Z0-9@:%_\+.~#?&//=]*)/;
 	if (pattern_nga.test(text)) {
 		const match = text.match(pattern_nga);
 		var ngaLink = match[0];
