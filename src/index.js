@@ -173,8 +173,13 @@ function substringDesc(desc) {
 	// 如果title字段的长度超过了最大字符数，则截取字符串
 	if (desc.length > maxLength) {
 		// 使用substring()方法截取字符串
-		const crPos = desc.indexOf('\n', maxLength);
-		if (crPos < maxmaxLength) {
+		var crPos = desc.indexOf('\n', maxLength);
+		// 未查找到换行符则设置为字符串长度
+		if (crPos == -1) {
+			crPos = desc.length - 1;
+		}
+		if (crPos < maxmaxLength) { // 换行符在最大长度和极限长度之间
+			// 裁剪到换行符
 			return desc.substring(0, crPos).trim();
 		} else {
 			return desc.substring(0, maxLength).trim() + '……';
