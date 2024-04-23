@@ -113,7 +113,7 @@ function getNGATextPreview(ngaLink, html) {
 	body = body.replaceAll(pattern_url, '<a href="$1">$1</a>');
 	// Replace [collapse]
 	const pattern_collapse = /\[collapse=(.*?)\](.*?)\[\/collapse\]/g;
-	body = body.replaceAll(pattern_collapse, '[$1]$2[/$1]')
+	body = body.replaceAll(pattern_collapse, '[$1]$2[/$1]');
 
 	body = substringDesc(body);
 
@@ -180,7 +180,8 @@ function substringDesc(desc) {
 		if (crPos == -1) {
 			crPos = desc.length - 1;
 		}
-		if (crPos < maxmaxLength) { // 换行符在最大长度和极限长度之间
+		if (crPos < maxmaxLength) {
+			// 换行符在最大长度和极限长度之间
 			// 裁剪到换行符
 			return desc.substring(0, crPos).trim();
 		} else {
