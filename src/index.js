@@ -112,6 +112,9 @@ function getNGATextPreview(ngaLink, html) {
 	// Replace [url] with <a href=""></a>
 	const pattern_url = /\[url\](.*?)\[\/url\]/g;
 	body = body.replaceAll(pattern_url, '<a href="$1">$1</a>');
+	// Replace [collapse]
+	const pattern_collapse = /\[collapse=(.*?)\](.*?)\[\/collapse\]/g;
+	body = body.replaceAll(pattern_collapse, '[$1]$2[/$1]')
 
 	body = substringDesc(body);
 
