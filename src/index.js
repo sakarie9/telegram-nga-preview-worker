@@ -9,7 +9,12 @@ const UA = 'Mozilla/5.0 (X11; Linux x86_64; rv:120.0) Gecko/20100101 Firefox/120
  * https://core.telegram.org/bots/api#message
  */
 async function onMessage(message) {
-	ngaLink = getNGALinkFromMessage(message.text);
+	text = message.text
+	if (text.startsWith('/start') || text.startsWith('/help')) {
+		return sendPlainText(message.chat.id, "Send me a NGA link!");
+	}
+
+	ngaLink = getNGALinkFromMessage(text);
 	if (ngaLink == null) {
 		return;
 	}
