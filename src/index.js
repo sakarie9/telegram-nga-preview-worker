@@ -9,9 +9,9 @@ const UA = 'Mozilla/5.0 (X11; Linux x86_64; rv:120.0) Gecko/20100101 Firefox/120
  * https://core.telegram.org/bots/api#message
  */
 async function onMessage(message) {
-	text = message.text
+	text = message.text;
 	if (text.startsWith('/start') || text.startsWith('/help')) {
-		return sendPlainText(message.chat.id, "Send me a NGA link!");
+		return sendPlainText(message.chat.id, 'Send me a NGA link!');
 	}
 
 	ngaLink = getNGALinkFromMessage(text);
@@ -73,7 +73,7 @@ async function getNGAHtml(ngaLink) {
 	return content; // return 1L content
 }
 
-function getNGACookie() {
+function getNGAGuestCookie() {
 	const timestamp = Math.round(new Date().getTime() / 1000) - 100;
 
 	var random5 = Math.floor(Math.random() * 0xfffff).toString(16);
@@ -83,7 +83,14 @@ function getNGACookie() {
 
 	const uid = `guest0${timestamp.toString(16)}${random5}`;
 
-	return `ngaPassportUid=${uid};guestJs=${timestamp}`;
+	return `ngaPassportUid=${uid};guestJs=${timestamp}_1ihvp2v`;
+}
+
+function getNGACookie() {
+	if (NGA_UID == '' || NGA_CID == '') {
+		return getNGAGuestCookie();
+	}
+	return `ngaPassportUid=${NGA_UID};ngaPassportCid=${NGA_CID}`;
 }
 
 function getNGATextPreview(ngaLink, html) {
@@ -207,7 +214,7 @@ async function sendPlainText(chatId, text) {
 			apiUrl('sendMessage', {
 				chat_id: chatId,
 				text,
-			})
+			}),
 		)
 	).json();
 }
@@ -224,7 +231,7 @@ async function sendTextReply(chatId, messageId, text) {
 				text,
 				parse_mode: 'HTML',
 				reply_to_message_id: messageId,
-			})
+			}),
 		)
 	).json();
 }
@@ -242,7 +249,7 @@ async function sendPhoto(chatId, messageId, photo, caption) {
 				caption,
 				parse_mode: 'HTML',
 				reply_to_message_id: messageId,
-			})
+			}),
 		)
 	).json();
 }
@@ -258,7 +265,7 @@ async function sendMediaGroup(chatId, messageId, media) {
 				chat_id: chatId,
 				media,
 				reply_to_message_id: messageId,
-			})
+			}),
 		)
 	).json();
 }

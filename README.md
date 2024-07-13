@@ -22,16 +22,24 @@ Or add the bot to a group, it will reply any message with a vaild NGA link with 
 
    copy-paste whole line and wrangler will promot you to input the sercet
 
-4. Deploy
+4. Get NGA UID and CID
+
+   this step is needed if the default guest mode not work
+
+   get your nga `ngaPassportUid` and `ngaPassportCid` from cookie
+
+   fill uid and cid in the `wrangler.toml`
+
+5. Deploy
 
    `wrangler deploy`
 
-5. Active webhook
+6. Active webhook
 
    get the url of the worker in cloudflare dashboard and append `/registerWebhook` to the url. For example: `https://telegram-nga-preview.username.workers.dev/registerWebhook`
 
    open the url in a browser, you will see a 'Ok'
 
-6. Done
+7. Done
 
    now you can send the bot some link to see if it works

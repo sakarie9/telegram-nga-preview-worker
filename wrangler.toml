@@ -8,3 +8,5 @@ DEBUG = false
 LOG = true
 WEBHOOK = '/endpoint'
 SECRET = '1145141919810abcdef' # // A-Z, a-z, 0-9, _ and -
+NGA_UID = ''
+NGA_CID = ''
