@@ -28,7 +28,11 @@ Or add the bot to a group, it will reply any message with a vaild NGA link with 
 
    get your nga `ngaPassportUid` and `ngaPassportCid` from cookie
 
-   fill uid and cid in the `wrangler.toml`
+   then
+
+   `wrangler secret put NGA_UID` and input `ngaPassportUid`
+
+   `wrangler secret put NGA_CID` and input `ngaPassportCid`
 
 5. Deploy
 
