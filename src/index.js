@@ -129,7 +129,7 @@ function getNGATextPreview(ngaLink, html) {
 	body = body.replaceAll(pattern_collapse, '[$1]$2[/$1]');
 	// Replace [b]
 	const pattern_bold = /\[b\](.*?)\[\/b\]/g;
-	body = body.replaceAll(pattern_url, '<b>$1</b>');
+	body = body.replaceAll(pattern_bold, '<b>$1</b>');
 
 	body = substringDesc(body);
 
