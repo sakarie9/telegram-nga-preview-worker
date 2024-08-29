@@ -93,6 +93,7 @@ function getNGACookie() {
 	return `ngaPassportUid=${NGA_UID};ngaPassportCid=${NGA_CID}`;
 }
 
+// https://core.telegram.org/bots/api#formatting-options
 function getNGATextPreview(ngaLink, html) {
 	const pattern_title = /<h3 id='postsubject0'>(.*?)<\/h3>/;
 	const pattern_body = /<p id='postcontent0' class='postcontent ubbcode'>(.*?)<\/p>/;
@@ -126,6 +127,9 @@ function getNGATextPreview(ngaLink, html) {
 	// Replace [collapse]
 	const pattern_collapse = /\[collapse=(.*?)\](.*?)\[\/collapse\]/g;
 	body = body.replaceAll(pattern_collapse, '[$1]$2[/$1]');
+	// Replace [b]
+	const pattern_bold = /\[b\](.*?)\[\/b\]/g;
+	body = body.replaceAll(pattern_url, '<b>$1</b>');
 
 	body = substringDesc(body);
 
